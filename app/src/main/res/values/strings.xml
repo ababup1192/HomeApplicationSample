@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HomeApplicationSample</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_activity_home">HomeActivity</string>
+    <string name="text_activity_login">Launch Activity</string>
+    <string name="button_login">Login</string>
+    <string name="button_logout">Logout</string>
+</resources>
