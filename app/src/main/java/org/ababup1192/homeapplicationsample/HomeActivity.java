@@ -1,19 +1,16 @@
 package org.ababup1192.homeapplicationsample;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 
 public class HomeActivity extends ActionBarActivity {
 
@@ -28,22 +25,9 @@ public class HomeActivity extends ActionBarActivity {
         sharedPreferences = getSharedPreferences("home_application", Activity.MODE_PRIVATE);
         Button logoutButton = (Button) findViewById(R.id.button_logout);
 
-        boolean isLogin = sharedPreferences.getBoolean("is_login", false);
-
-        // ログインされていないとき
-        if (!isLogin) {
-            this.finish();
-            // Login Activityへ強制的に飛ばす。
-            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PackageManager packageManager = getPackageManager();
-                ComponentName componentName = new ComponentName(HomeActivity.this, HomeActivity.class);
                 editor = sharedPreferences.edit();
                 // ログインフラグを折り、ログアウトフラグを立てた状態でログアウト。
                 editor.putBoolean("is_login", false);
@@ -52,13 +36,13 @@ public class HomeActivity extends ActionBarActivity {
                 // Login Activityへ飛ばす。
                 Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent);
-                // HomeActivity(アプリ自身を)をホームボタンの候補から外す。
-                packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                // デフォルト起動オフ
+                PackageManager packageManager = getPackageManager();
+                packageManager.clearPackagePreferredActivities(getPackageName());
             }
         });
 
     }
-
 
     // バックキー無効
     @Override
@@ -76,6 +60,15 @@ public class HomeActivity extends ActionBarActivity {
         return super.dispatchKeyEvent(event);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        boolean isLogout = sharedPreferences.getBoolean("is_login", false);
+        if (!isLogout) {
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

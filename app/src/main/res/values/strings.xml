@@ -7,4 +7,7 @@
     <string name="text_activity_login">Launch Activity</string>
     <string name="button_login">Login</string>
     <string name="button_logout">Logout</string>
+    <string name="title_activity_home_activity_dummy">HomeActivityDummy</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
