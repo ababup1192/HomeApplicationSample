@@ -1,12 +1,17 @@
-package org.ababup1192.homeapplicationsample;
+package org.ababup1192.homeapplicationsample.activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.ababup1192.homeapplicationsample.R;
+import org.ababup1192.homeapplicationsample.activity.login.LoginActivity;
 
-public class LoginActivityDummy extends LoginActivity {
+/**
+ * デフォルトホームアプリケーションをコントロール(有効・無効)するダミーアクティビティ
+ * ホームアプリの候補から選択された場合は、LoginActivityへ遷移(継承利用)
+ */
+public class HomeControlActivity extends LoginActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,21 +7,21 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <!-- 起動時のアクティビティ -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.login.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
-                <!-- Login用Activity -->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!-- デフォルトホームアプリケーションをコントロール(有効・無効)するダミーアクティビティ  -->
         <activity
-            android:name=".LoginActivityDummy"
+            android:name=".activity.HomeControlActivity"
             android:label="@string/app_name"
-            android:enabled="false">
-
+            android:enabled="false"> <!-- 最初はデフォルトのアプリケーションではない。 -->
+            <!-- デフォルトホームアプリケーションのためのインテントフィルタ -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,9 +30,9 @@
             </intent-filter>
         </activity>
 
-        <!-- Login後のActivity -->
+        <!-- デフォルトホームアプリケーションのデフォルトアクティビティ -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:label="@string/app_name" />
     </application>
 
