@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,6 +96,23 @@ public class LoginActivity extends ActionBarActivity {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        boolean isLogout = sharedPreferences.getBoolean("is_logout", false);
+
+        if (isLogout) {
+            PackageManager packageManager = getPackageManager();
+            ComponentName componentName = new ComponentName(LoginActivity.this, HomeActivity.class);
+            editor = sharedPreferences.edit();
+            // ログアウト処理の終了
+            editor.putBoolean("is_logout", false);
+            editor.apply();
+            packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
         }
     }
 
