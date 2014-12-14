@@ -100,23 +100,6 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-
-        boolean isLogout = sharedPreferences.getBoolean("is_logout", false);
-
-        if (isLogout) {
-            PackageManager packageManager = getPackageManager();
-            ComponentName componentName = new ComponentName(LoginActivity.this, HomeActivity.class);
-            editor = sharedPreferences.edit();
-            // ログアウト処理の終了
-            editor.putBoolean("is_logout", false);
-            editor.apply();
-            packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
