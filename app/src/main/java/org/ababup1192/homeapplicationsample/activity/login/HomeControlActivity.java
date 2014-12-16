@@ -1,4 +1,4 @@
-package org.ababup1192.homeapplicationsample.activity;
+package org.ababup1192.homeapplicationsample.activity.login;
 
 import android.os.Bundle;
 import android.view.Menu;

@@ -18,7 +18,7 @@
         </activity>
         <!-- デフォルトホームアプリケーションをコントロール(有効・無効)するダミーアクティビティ  -->
         <activity
-            android:name=".activity.HomeControlActivity"
+            android:name=".activity.login.HomeControlActivity"
             android:label="@string/app_name"
             android:enabled="false"> <!-- 最初はデフォルトのアプリケーションではない。 -->
             <!-- デフォルトホームアプリケーションのためのインテントフィルタ -->

@@ -7,14 +7,12 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import org.ababup1192.homeapplicationsample.activity.HomeActivity;
-import org.ababup1192.homeapplicationsample.activity.HomeControlActivity;
 import org.ababup1192.homeapplicationsample.R;
 
 /**
